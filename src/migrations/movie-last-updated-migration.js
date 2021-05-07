@@ -19,9 +19,9 @@ require("dotenv").config()
 // To read more about this type of expression, refer to https://developer.mozilla.org/en-US/docs/Glossary/IIFE
 ;(async () => {
   try {
-    const host = `mongodb+srv://m220student:m220password@mflix.4aoqk.mongodb.net/test`
+    const host = process.env.MFLIX_DB_URI
     const client = await MongoClient.connect(host, { useNewUrlParser: true, useUnifiedTopology: true })
-    const mflix = client.db("sample_mflix")
+    const mflix = client.db(process.env.MFLIX_NS)
 
     // TODO: Create the proper predicate and projection
     // add a predicate that checks that the `lastupdated` field exists, and then
